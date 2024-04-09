@@ -88,19 +88,19 @@ const CartPage = () => {
                                 : `Hello  ${auth?.token && auth?.user?.name}`}
                             <p className="text-center">
                                 {cart?.length
-                                    ? `You Have ${cart.length} items in your cart ${auth?.token ? "" : "please login to checkout !"
+                                    ? `You Have ${cart.length} item in your cart ${auth?.token ? "" : "please login to checkout !"
                                     }`
                                     : " Your Cart Is Empty"}
                             </p>
                         </h1>
                     </div>
                 </div>
-                <div className="container ">
+                <div className="container " >
                     <div className="row ">
-                        <div className="col-md-7  p-0 m-0">
+                        <div className="col-md-7  p-1 m-0">
                             {cart?.map((p) => (
                                 <div className="row card flex-row" key={p._id}>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4" style={{width:"200px"}}>
                                         <img
                                             src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                                             className="card-img-top"
@@ -116,7 +116,7 @@ const CartPage = () => {
                                     </div>
                                     <div className="col-md-4 cart-remove-btn">
                                         <button
-                                            className="btn btn-danger"
+                                            className="btn btn-danger mt-4"
                                             onClick={() => removeCartItem(p._id)}
                                         >
                                             Remove

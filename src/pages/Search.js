@@ -1,8 +1,16 @@
 import React from "react";
 import Layout from "../components/Layout/Layout.js";
+import { useCart } from '../context/Cart.js';
+import { useNavigate } from 'react-router-dom';
+
+import  toast  from 'react-hot-toast';
 import { useSearch } from "../context/Search.js";
 const Search = () => {
     const [values, setValues] = useSearch();
+    const navigate = useNavigate()
+
+    const [cart ,setCart] = useCart()
+
     return (
         <Layout title={"Search results"}>
             <div className="container">
@@ -11,7 +19,7 @@ const Search = () => {
                     <h6>
                         {values?.results.length < 1
                             ? "No Products Found"
-                            : `Found ${values?.results.length}`}
+                            : `Found ${values?.results.length} results`}
                     </h6>
                     <div className="d-flex flex-wrap mt-4">
                         {values?.results.map((p) => (
@@ -27,8 +35,8 @@ const Search = () => {
                                         {p.description.substring(0, 30)}...
                                     </p>
                                     <p className="card-text"> $ {p.price}</p>
-                                    <button class="btn btn-primary ms-1">More Details</button>
-                                    <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                                    <button class="btn btn-primary ms-1" onClick={()=> navigate(`/product/${p.slug}`)}>More Details</button>
+                                    <button class="btn btn-secondary ms-1" onClick={()=>{setCart([...cart,p]);localStorage.setItem("cart",JSON.stringify([...cart,p]));toast.success("Item added to cart.")}}>ADD TO CART</button>
                                 </div>
                             </div>
                         ))}

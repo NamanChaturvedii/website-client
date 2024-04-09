@@ -10,7 +10,7 @@ const About = () => {
           <img
             src={pic}
             alt="aboutus"
-            style={{ width: "100%" }}
+            style={{ width: "100%" }} 
           />
         </div>
         <div className="col-md-4">
@@ -19,6 +19,7 @@ const About = () => {
             I Naman Chaturvedi, student of B-tech 1 year . Learning to become a software Engineer from VIT-BHOPAL..
             I am also available for working as FREELANCER..
           </p>
+          
         </div>
       </div>
     </Layout>

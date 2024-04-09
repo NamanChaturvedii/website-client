@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout.js";
+import { useCart } from '../context/Cart.js';
+import  toast  from 'react-hot-toast';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 // import "../styles/ProductDetailsStyles.css";
 
 const ProductDetails = () => {
     const params = useParams();
+    const [cart ,setCart] = useCart()
     const navigate = useNavigate();
     const [product, setProduct] = useState({});
     const [relatedProducts, setRelatedProducts] = useState([]);
@@ -40,16 +43,16 @@ const ProductDetails = () => {
     return (
         <Layout>
             <div className="row container product-details">
-                <div className="col-md-6">
+                <div className="col-md-6" style={{width:"350px",marginTop:"10px"}}>
                     <img
                         src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
                         className="card-img-top"
                         alt={product.name}
-                        height="400"
+                        height="370px"
                         width={"250px"}
                     />
                 </div>
-                <div className="col-md-6 product-details-info ">
+                <div className="col-md-6 product-details-info  ">
                     <h1 className="text-center">Product Details</h1>
                     <hr />
                     <h6>Name : {product.name}</h6>
@@ -65,7 +68,7 @@ const ProductDetails = () => {
                         })}
                     </h6>
                     <h6>Category : {product?.category?.name}</h6>
-                    <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                    <button class="btn btn-secondary "  onClick={()=>{setCart([...cart,product]);localStorage.setItem("cart",JSON.stringify([...cart,product]));toast.success("Item added to cart.")}}>ADD TO CART</button>
                 </div>
             </div>
             <hr />
@@ -81,7 +84,7 @@ const ProductDetails = () => {
                                 src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                                 className="card-img-top"
                                 alt={p.name}
-                                height="200"
+                                height="250"
                         width={"50px"}
                             />
                             <div className="card-body">

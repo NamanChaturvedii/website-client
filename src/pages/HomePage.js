@@ -4,7 +4,7 @@ import { useAuth } from '../context/Authjs'
 import axios from "axios";
 import { Checkbox, Radio } from "antd"
 import { Prices } from "../components/Prices.js"
-import { set } from 'mongoose';
+// import { set } from 'mongoose';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/Cart.js';
 import  toast  from 'react-hot-toast';
@@ -121,20 +121,20 @@ const HomePage = () => {
 
     return (
         <Layout title={"Home - All products"}>
-            <div className='row mt-3'>
-                <div className='col-md-2'>
-                    <h4 className='text-center'>Filter By category</h4>
+            <div  className='row mt-3'>
+                <div   className='col-md-2'>
+                    <h4 className='text-center' style={{fontStyle:"italic",paddingLeft:"10px"}}>Filter By category</h4>  
                     <div className='d-flex flex-column'>
                         {categories?.map(c => (
-                            <Checkbox key={c._id} onChange={(e) => handleFilter(e.target.checked, c._id)}>
+                            <Checkbox style={{paddingLeft:"10px",fontSize:"17px"}} key={c._id} onChange={(e) => handleFilter(e.target.checked, c._id)}>
                                 {c.name}
                             </Checkbox>
                         ))}
                     </div>
                     {/* filete by prices */}
-                    <h4 className='text-center mt-4'>Filter By Prices</h4>
+                    <h4 className='text-center mt-4'style={{fontStyle:"italic",}}>Filter By Prices</h4>
                     <div className='d-flex flex-column'>
-                        <Radio.Group onChange={e => setRadio(e.target.value)}>
+                        <Radio.Group style={{paddingLeft:"10px",fontSize:"17px"}} onChange={e => setRadio(e.target.value)}>
                             {Prices?.map(p => (
                                 <div key={p._id}>
                                     <Radio value={p.array} >{p.name}</Radio>
@@ -143,19 +143,20 @@ const HomePage = () => {
                             ))}
                         </Radio.Group>
                     </div>
-                    <div className='d-flex flex-column'>
+                    <div style={{paddingTop:"14px"}} className='d-flex flex-column'>
                         <button className='btn btn-danger' onClick={() => window.location.reload()}>Reset Filters</button>
                     </div>
 
                 </div>
+                
                 <div className='col-md-9'>
 
-                    <h1 className='text-center'>All products</h1>
-                    <div className='d-flex flex-wrap'>
+                    <h1 className='text-center' style={{fontStyle:"italic"}}>All Products</h1>
+                    <div className='d-flex flex-wrap'style={{paddingLeft:"20px",justifyContent:"space-evenly"}}>
                         {products?.map((p) => (
 
-                            <div className="card m-2" style={{ width: "18rem" }}>
-                                <img
+                            <div className="card m-2 " style={{  width: "18rem",borderRadius:"20px",borderWidth:"4px",borderColor:"grey" }}>
+                                <img style={{ height: "100%", width: "100%" }}
                                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
                                     className="card-img-top"
                                     alt={p.name}

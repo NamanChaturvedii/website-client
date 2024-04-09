@@ -10,6 +10,7 @@ import SearchInput from '../Form/SearchInput';
 import useCategory from '../../hooks/useCategory';
 import { useCart } from '../../context/Cart.js';
 import { Badge } from 'antd';
+// import { yellow } from 'colors/index.js';
 
 
 
@@ -34,11 +35,11 @@ const Header = () => {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="collapse navbar-collapse" style={{textDecoration:"none" ,fontStyle:"italic", fontSize:"19px"}} id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput/>
-              <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+              <SearchInput />
+              <li className="nav-item"  >
+                <NavLink className="nav-link active" style={{color:"black"}}  aria-current="page" to="/">Home</NavLink>
               </li>
               <li className="nav-item dropdown">
                 <Link
@@ -83,7 +84,7 @@ const Header = () => {
                       href="#"
                       role="button"
                       data-bs-toggle="dropdown"
-                      style={{ border: "none" }}
+                      style={{ border: "none",}}
                     >
                       {auth?.user?.name}
                     </NavLink>
@@ -112,9 +113,9 @@ const Header = () => {
                 </>
                 )
               }
-              <li className="nav-item">
-                <Badge count={cart?.length} showZero>
-                <NavLink className="nav-link" to="/cart">Cart</NavLink>
+              <li className="nav-item" style={{marginRight:"2px"}}>
+                <Badge  count={cart?.length} showZero>
+                <NavLink style={{color:"black"}} className="nav-link" to="/cart"><h5>Cart</h5></NavLink>
                 </Badge>
               </li>
             </ul>

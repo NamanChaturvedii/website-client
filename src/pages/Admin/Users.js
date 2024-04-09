@@ -12,6 +12,10 @@ const Users = () => {
                     </div>
                     <div className='col-md-9'>
                         <h1>All users</h1>
+                        {/* showing all the users */}
+                        {/* do same as get all products */}
+                        
+                        
                     </div>
 
                 </div>
@@ -21,3 +25,7 @@ const Users = () => {
 }
 
 export default Users
+
+
+
+

@@ -33,12 +33,12 @@ const CategoryProduct = () => {
                     <div className="col-md-9 offset-1">
                         <div className="d-flex flex-wrap">
                             {products?.map((p) => (
-                                <div className="card m-2" key={p._id}>
-                                    <img
+                                <div className="card m-2" style={{borderWidth:"3px",borderRadius:"5px",}} key={p._id}>
+                                    <img 
                                         src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                                        className="card-img-top"
+                                        className="card-img-top" 
                                         alt={p.name}
-                                        height="200"
+                                        height="250"
                                     />
                                     <div className="card-body">
                                         <div className="card-name-price">

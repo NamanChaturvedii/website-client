@@ -13,6 +13,7 @@
   box-shadow: 0 8px 6px -6px gray;
   --webkit-box-shadow: 0 8px 6px -6px gray;
   border-bottom: solid gray !important;
+
 }
 
 
@@ -49,7 +50,7 @@
 .footer {
   color: white;
   margin: 0;
-  padding: 20px;
+  padding: 15px;
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -57,6 +58,7 @@
     #000000
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #434343, #000000);
+  font-style: italic;
 }
 
 .footer a {
